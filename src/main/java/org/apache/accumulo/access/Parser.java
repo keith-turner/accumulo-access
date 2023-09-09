@@ -65,6 +65,9 @@ class Parser {
                     current = TokenType.ACCESS_TOKEN;
                     break;
                 default:
+                    if(!AccessExpressionImpl.isValidAuthChar(asByte(nextChar))) {
+                        throw new IllegalArgumentException("Invalid character seen");
+                    }
                     readAccessToken(nextChar);
                     current = TokenType.ACCESS_TOKEN;
                     break;

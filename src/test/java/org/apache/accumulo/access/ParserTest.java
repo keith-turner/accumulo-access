@@ -27,12 +27,8 @@ public class ParserTest {
                             Assertions.assertThrows(RuntimeException.class, ()->Parser.parseAccessExpression(expression), expression);
                             break;
                     }
-
-
                 }
             }
         }
-
     }
-
 }
