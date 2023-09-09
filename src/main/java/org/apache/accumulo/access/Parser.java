@@ -183,10 +183,10 @@ class Parser {
         if(tokenizer.hasNext()) {
             switch (tokenizer.peek()) {
                 case AND_OP:
-                    parseAndOp(tokenizer);
+                    parseAndExpression(tokenizer);
                     break;
                 case OR_OP:
-                    parseOrOp(tokenizer);
+                    parseOrExpression(tokenizer);
                     break;
             }
         }
@@ -205,7 +205,7 @@ class Parser {
         }
     }
 
-    private static void parseAndOp(Tokenizer tokenizer) {
+    private static void parseAndExpression(Tokenizer tokenizer) {
         if(!tokenizer.hasNext() || tokenizer.next() != TokenType.AND_OP){
             throw new IllegalArgumentException();
         }
@@ -223,11 +223,11 @@ class Parser {
         }
 
         if(tokenizer.hasNext() && tokenizer.peek() == TokenType.AND_OP) {
-            parseAndOp(tokenizer);
+            parseAndExpression(tokenizer);
         }
     }
 
-    private static void parseOrOp(Tokenizer tokenizer) {
+    private static void parseOrExpression(Tokenizer tokenizer) {
         if(!tokenizer.hasNext() || tokenizer.next() != TokenType.OR_OP){
             throw new IllegalArgumentException();
         }
@@ -245,7 +245,7 @@ class Parser {
         }
 
         if(tokenizer.hasNext() && tokenizer.peek() == TokenType.OR_OP) {
-            parseOrOp(tokenizer);
+            parseOrExpression(tokenizer);
         }
     }
 }
